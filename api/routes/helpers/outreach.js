@@ -1,6 +1,5 @@
 var db = require('../../models')
 
-
 exports.getOutreaches = (req,res)=>{
     db.Outreach.find().then((outreachs)=>{
         res.json(outreachs)
