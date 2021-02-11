@@ -10,15 +10,26 @@ exports.getExpenses = (req,res)=>{
 }
 
 
-exports.createExpense = (req,res)=>{
-    db.Expense.create(req.body).then(
-        (newExpense)=>{
-            console.log(`added ${expense} to database`, newExpense);
-            res.json(newExpense)
-        }
-    ).catch((error)=>{
-        res.send(error)
-    })
+exports.createExpense = async (req,res)=>{
+    try{
+                db.Expense.create(req.body).then(
+                    async (newExpense)=>{
+                    //console.log(`added ${expense} to database`, newExpense);
+                // console.log(req.params.id)
+                    let foundOutreach = await db.Outreach.findById(req.params.outreachId);
+                        
+                        console.log("NEW outreach "+foundOutreach)
+                        console.log("INSERTING EXPENSE "+newExpense._id)
+                        foundOutreach.expenses.push(newExpense._id)
+                        await foundOutreach.save();
+                        res.json(newExpense)
+                }
+            ).catch((error)=>{
+                res.send(error)
+            })
+    }
+    catch(err){console.log(err)}
+    
 }
 
 exports.getExpenseById = (req,res)=>{

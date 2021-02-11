@@ -5,6 +5,9 @@ var helpers = require('./helpers/expense')
 
 router.route('/')
 .get(helpers.getExpenses)
+
+
+router.route('/:outreachId')
 .post(helpers.createExpense)
 
 router.route('/:expenseId')
