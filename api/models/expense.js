@@ -1,18 +1,18 @@
 var mongoose = require('mongoose');
-const Expense = require('./expense');
 
-var outreachSchema = new mongoose.Schema({
+var expenseSchema = new mongoose.Schema({
     name: {
         type: String,
         required: 'Name cannot be blank'
     },
+    category: {
+        type: String,
+        default: "Clothing",
+        required: 'Need to choose a category'
+    },
     total_cost: {
         type: Number,
         default: 0.0
-    },
-    expenses: {
-        type: [Expense],
-        default: []
     },
     created_date: {
         type: Date,
@@ -20,6 +20,6 @@ var outreachSchema = new mongoose.Schema({
     }
 });
 
-var Outreach = mongoose.model('Outreach',outreachSchema);
+var Expense = mongoose.model('Expense',expenseSchema);
 
-module.exports = Outreach ;
+module.exports = Expense ;

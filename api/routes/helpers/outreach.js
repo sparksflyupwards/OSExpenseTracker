@@ -48,6 +48,16 @@ exports.deleteOutreachById = (req,res)=>{
         }).catch((error)=>{
             res.send(error)
         })
+
+exports.addExpenseToOutreachById = (req,res)=>{
+    console.log(req.params.outreachId)
+        db.Outreach.findOneAndUpdate({_id: req.params.outreachId}, req.body, {new: true}).then((outreachs)=>{
+            res.json(outreachs)
+        }).catch((error)=>{
+            res.send(error)
+        })
+       
+    }
        
 }
 module.exports = exports;
