@@ -1,6 +1,8 @@
 require('dotenv').config();
 
-var compassionRoutes = require('./routes/outreaches');
+var outreachesRoutes = require('./routes/outreaches');
+var expensesRoutes = require('./routes/expenses');
+
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser');
@@ -12,4 +14,5 @@ app.listen(process.env.PORT, ()=>{
     console.log(":-)");
 })
 
-app.use('/api/compassion/outreaches/', compassionRoutes);
+app.use('/api/compassion/outreaches/', outreachesRoutes);
+app.use('/api/compassion/expenses/', expensesRoutes);

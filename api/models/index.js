@@ -5,3 +5,4 @@ mongoose.connect('mongodb://localhost/api');
 mongoose.Promise = Promise;
 
 module.exports.Outreach = require("./outreach")
+module.exports.Expense = require("./expense")

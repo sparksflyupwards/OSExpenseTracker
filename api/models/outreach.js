@@ -10,10 +10,10 @@ var outreachSchema = new mongoose.Schema({
         type: Number,
         default: 0.0
     },
-    expenses: {
-        type: [Expense],
-        default: []
-    },
+    expenses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Expense'
+    }],
     created_date: {
         type: Date,
         default: Date.now
