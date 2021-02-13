@@ -48,9 +48,7 @@ export default function OutreachesDisplay() {
       <button onClick={getOutreachData}>
             Get Data
       </button>
-      <Fab color="primary" aria-label="add">
-      <AddIcon />
-      </Fab>
+     
      {<div> 
          {outreachData.map((outreach, idx)=>{
              console.log(outreach)
@@ -74,7 +72,9 @@ export default function OutreachesDisplay() {
              )
          })} </div>}
 
-      
+<Fab color="primary" aria-label="add">
+      <AddIcon />
+      </Fab>
     </div>
   );
 }
