@@ -33,9 +33,9 @@ export default function OutreachesDisplay() {
 
     axios.get("http://localhost:8080/api/compassion/outreaches/")
     .then(({data})=>{
-        console.log(data[0])
+        //console.log(data)
 
-    setOutreachData([...outreachData, data[0]])
+    setOutreachData([...data])
     })
   }
 
@@ -52,10 +52,11 @@ export default function OutreachesDisplay() {
       <AddIcon />
       </Fab>
      {<div> 
-         {outreachData.map(outreach=>{
+         {outreachData.map((outreach, idx)=>{
+             console.log(outreach)
              return(
                 <div>
-                    <Accordion>
+        <Accordion key={idx}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
